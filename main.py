@@ -10,14 +10,15 @@ geojson_data = """
 { "type": "Feature", "properties": { "OBJECTID": 2, "SAP_EQUIPMENT": "100293721", "ITEM_DESCRIPTION": "BBQ - ELECTRIC DOUBLE", "ITEM_TYPE": "BARBEQUE", "SAP_FUNCTIONAL_LOCATION": "B-RE-0169-N003", "PARK_NUMBER": "D2007", "PARK_NAME": "CASCADE DRIVE PARK (NO.20)", "SUBURB": "FOREST LAKE", "POWER_TYPE": "MAINS POWER", "NUMBER_OF_PLATES": 2, "LONG": 152.96464914500001, "LAT": -27.629073494999901 }, "geometry": { "type": "Point", "coordinates": [ 152.964649145000067, -27.629073494999943 ] } }
 ]
 }
+
 """
 
 data = json.loads(geojson_data)
 filtered_features = []
 
 for feature in data["features"]:
-    if "ELECTRIC" not in feature["properties"]["ITEM_DESCRIPTION"]:
-        filtered_features.append(feature)
+  if "ELECTRIC" not in feature["properties"]["ITEM_DESCRIPTION"]:
+    filtered_features.append(feature)
 
 data["features"] = filtered_features
 filtered_geojson_data = json.dumps(data)
